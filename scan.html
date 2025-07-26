@@ -5,35 +5,24 @@
   <title>Scan QR</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://unpkg.com/html5-qrcode"></script>
+  <script src="app.js"></script> <!-- important -->
 </head>
 <body>
   <h2>Scan Your QR Code</h2>
-  <div id="reader" style="width: 300px; margin: auto;"></div>
+  <div id="reader" style="width: 300px;"></div>
 
   <script>
-    function markAttendance(regNo) {
-      const date = new Date().toLocaleDateString();
-      let attendance = JSON.parse(localStorage.getItem("attendance") || "{}");
-      if (!attendance[regNo]) attendance[regNo] = [];
-      if (!attendance[regNo].includes(date)) {
-        attendance[regNo].push(date);
-        alert("✔️ Attendance marked for: " + regNo);
-      } else {
-        alert("⚠️ Already marked today.");
-      }
-      localStorage.setItem("attendance", JSON.stringify(attendance));
-    }
-
     const qrScanner = new Html5Qrcode("reader");
+
     qrScanner.start(
       { facingMode: "environment" },
       { fps: 10, qrbox: 250 },
       qrCodeMessage => {
-        markAttendance(qrCodeMessage);
+        markAttendance(qrCodeMessage.trim()); // ✅ call from app.js
         qrScanner.stop();
       },
       errorMessage => {
-        // Silent error
+        // silent
       }
     );
   </script>
