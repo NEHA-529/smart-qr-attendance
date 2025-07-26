@@ -2,15 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Student Panel</title>
+  <title>Student Panel - Smart QR Attendance</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h2>Welcome, Student</h2>
-    <p>Your Attendance QR:</p>
-    <img src="https://api.qrserver.com/v1/create-qr-code/?data=2301111058038&size=200x200" alt="QR Code" />
-    <a href="attendance-table.html" class="btn">View Attendance</a>
+  <div class="staff-container">
+    <header>
+      <h1>Student Dashboard</h1>
+      <h2>Welcome, Student</h2>
+    </header>
+
+    <section class="card">
+      <h3>Your QR Code</h3>
+      <div style="text-align: center; margin-top: 20px;">
+        <img src="student-qr.png" alt="QR Code" width="200" height="200" />
+        <p style="margin-top: 10px;">Register No: 2301111058038</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Your Attendance Record</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>26-Jul</td><td>✔️ Present</td></tr>
+            <tr><td>27-Jul</td><td>❌ Absent</td></tr>
+            <!-- Add more rows dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </section>
   </div>
 </body>
 </html>
