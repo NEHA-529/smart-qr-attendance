@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Scan QR</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>QR Scanner</title>
+  <link rel="stylesheet" href="style.css" />
   <script src="https://unpkg.com/html5-qrcode"></script>
-  <script src="app.js"></script> <!-- important -->
 </head>
 <body>
-  <h2>Scan Your QR Code</h2>
-  <div id="reader" style="width: 300px;"></div>
+  <div class="container">
+    <h2>Scan Student QR</h2>
+    <div id="reader" style="width: 300px; margin: auto;"></div>
+    <p id="status"></p>
+  </div>
 
   <script>
-    const qrScanner = new Html5Qrcode("reader");
+    function markAttendance(regNo) {
+      let today = new Date().toLocaleDateString();
+      let data = JSON.parse(localStorage.getItem("attendance") || "{}");
+      if (!data[regNo]) data[regNo] = {};
+      data[regNo][today] = "✔";
+      localStorage.setItem("attendance", JSON.stringify(data));
+      document.getElementById("status").innerText = `Marked: ${regNo} ✅`;
+    }
 
-    qrScanner.start(
+    new Html5Qrcode("reader").start(
       { facingMode: "environment" },
       { fps: 10, qrbox: 250 },
-      qrCodeMessage => {
-        markAttendance(qrCodeMessage.trim()); // ✅ call from app.js
-        qrScanner.stop();
-      },
-      errorMessage => {
-        // silent
+      (decodedText) => {
+        markAttendance(decodedText);
       }
     );
   </script>
