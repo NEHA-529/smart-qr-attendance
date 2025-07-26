@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scan QR</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body>
+  <h2>Scan Your QR Code</h2>
+  <div id="reader" style="width: 300px; margin: auto;"></div>
+
+  <script>
+    function markAttendance(regNo) {
+      const date = new Date().toLocaleDateString();
+      let attendance = JSON.parse(localStorage.getItem("attendance") || "{}");
+      if (!attendance[regNo]) attendance[regNo] = [];
+      if (!attendance[regNo].includes(date)) {
+        attendance[regNo].push(date);
+        alert("✔️ Attendance marked for: " + regNo);
+      } else {
+        alert("⚠️ Already marked today.");
+      }
+      localStorage.setItem("attendance", JSON.stringify(attendance));
+    }
+
+    const qrScanner = new Html5Qrcode("reader");
+    qrScanner.start(
+      { facingMode: "environment" },
+      { fps: 10, qrbox: 250 },
+      qrCodeMessage => {
+        markAttendance(qrCodeMessage);
+        qrScanner.stop();
+      },
+      errorMessage => {
+        // Silent error
+      }
+    );
+  </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+/* Import a clean font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  margin: 0;
+  padding: 0;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  margin-top: 30px;
+  font-weight: 600;
+}
+
+input, button {
+  padding: 12px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 250px;
+  font-size: 16px;
+  outline: none;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 500;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Center all content */
+body > * {
+  text-align: center;
+}
+
+/* Attendance table styling */
+#attendanceTable table {
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+#attendanceTable th, #attendanceTable td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+#attendanceTable th {
+  background-color: #007bff;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#attendanceTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#attendanceTable tr:hover {
+  background-color: #e0f7fa;
+}
+
+/* Responsive design */
+@media screen and (max-width: 600px) {
+  input, button {
+    width: 90%;
+  }
+
+  #attendanceTable table {
+    font-size: 14px;
+  }
+}
+
