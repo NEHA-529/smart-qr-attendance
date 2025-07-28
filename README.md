@@ -43,7 +43,9 @@ This version is built using:
 
 ## 🛠 Setup Instructions
 
-1. Download or clone the repository:2. Open `index.html` in any modern browser (like Chrome).
+1. Download or clone the repository
+
+2.  Open `index.html` in any modern browser (like Chrome).
 
 3. Allow **camera permission** for scanning QR codes.
 
