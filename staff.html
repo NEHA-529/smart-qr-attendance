@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Staff Dashboard - Smart QR Attendance</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+<body>
+  <div class="login-container">
+    <h2>👩‍🏫 Staff Dashboard</h2>
+
+    <!-- Add Student Form -->
+    <div class="login-box">
+      <h3>Add Student</h3>
+      <input type="text" id="sname" placeholder="Student Name" />
+      <input type="text" id="sreg" placeholder="Register Number" />
+      <input type="password" id="spass" placeholder="Password" />
+      <button onclick="addStudent()">Add Student</button>
+    </div>
+
+    <!-- QR Scanner -->
+    <div class="login-box">
+      <h3>Scan QR to Mark Attendance</h3>
+      <div id="reader" style="width:300px; margin:auto;"></div>
+    </div>
+
+    <!-- Attendance Table -->
+    <div class="login-box">
+      <h3>Attendance Records</h3>
+      <div id="attendanceTable"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="scanner.js"></script>
+  <script src="attendance.js"></script>
+</body>
+</html>

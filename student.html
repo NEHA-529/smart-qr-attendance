@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Dashboard - Smart QR Attendance</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+</head>
+<body>
+  <div class="login-container">
+    <h2>🎓 Student Dashboard</h2>
+
+    <div class="login-box">
+      <h3>Your QR Code</h3>
+      <div id="qrcode"></div>
+    </div>
+
+    <div class="login-box">
+      <h3>Your Attendance</h3>
+      <div id="studentAttendance"></div>
+    </div>
+  </div>
+
+  <script>
+    const student = JSON.parse(localStorage.getItem('loggedStudent'));
+    if (!student) {
+      alert("Please login");
+      window.location.href = "index.html";
+    }
+
+    // Show QR
+    QRCode.toCanvas(document.createElement('canvas'), student.reg, function (error, canvas) {
+      if (error) console.error(error);
+      document.getElementById("qrcode").appendChild(canvas);
+    });
+
+    // Show attendance
+    let html = `<table border="1" style="width:100%; text-align:center;">
+      <tr><th>Date</th><th>Status</th></tr>`;
+    const dates = student.attendance || [];
+
+    dates.forEach(d => {
+      html += `<tr><td>${d}</td><td>✅ Present</td></tr>`;
+    });
+
+    if (dates.length === 0) {
+      html += `<tr><td colspan="2">No attendance marked yet.</td></tr>`;
+    }
+
+    html += `</table>`;
+    document.getElementById("studentAttendance").innerHTML = html;
+  </script>
+</body>
+</html>
