@@ -59,11 +59,6 @@ This version is built using:
 
 ---
 
-## 📸 Screenshots (Optional)
-> You can add images here after uploading.
-
----
-
 ## 👩‍💻 Developed by
 **Neha N, Divyabharathi M, Vishnupriya S, Mirjahan Sahitha S**  
 B.Sc. Computer Science  
